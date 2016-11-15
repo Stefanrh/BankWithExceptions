@@ -16,13 +16,25 @@ namespace Sandbox
 
         public BankAccount(double interestRate)
         {
+
+            if ((interestRate < 0) || (interestRate > 20))
+            {
+
+               throw new IllegalInterestRateException();
+            }
             this.interestRate = interestRate;
             this.balance = 0.0;
         }
 
+
         public void Deposit(double amount)
         {
             balance = balance + amount;
+
+            if (amount < 0)
+            {
+                throw new NegativeAmountException();
+            }
         }
 
         public void Withdraw(double amount)
